@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J2" />
+		<setting name="cacheEnabled" value="true" /> <!--是否开启缓存 默认为true -->
+		<setting name="lazyLoadingEnabled" value="true" /> <!--是否启用延迟加载 默认为true  -->
+		<setting name="multipleResultSetsEnabled" value="true" /> <!--是否允许一个单独的语句返回多个结果集  默认为true -->
+		<setting name="useColumnLabel" value="true" />  <!--是否使用列标签  -->
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="defaultStatementTimeout" value="10" /><!-- 超市时间 -->
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="page" type="com.pwd.mavenTest.util.page.PageParam" />
+
+	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.pwd.mavenTest.util.page.PageInterceptor">
+			<property name="dbType" value="mysql" />
+		</plugin>
+	</plugins>
+	
+</configuration>
