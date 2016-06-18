@@ -1,8 +1,6 @@
 package com.pwd.mavenTest.controller;
 
-import java.io.IOException;
 
-import net.iharder.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,11 +31,4 @@ public class UserController {
 		
 	}
 	
-	public static void main(String args[]) throws IOException, ClassNotFoundException{
-		String msg= "eyJjb250ZW50Ijoie1wiY3JlYXRlVGltZVwiOjE0NjQ4MjY4ODcwMDAsXCJsYXRpdHVkZVwiOjMwLjQ5MDkwOSxcInJhZGl1c1wiOjI1LFwiYmVoYXZpb3JcIjoxLFwidHlwZVwiOjIsXCJsb25naXR1ZGVcIjoxMTQuMTQ3Nzk2Mn0iLCJ0eXBlIjoxLCJ3YXRjaElkIjoiOTQxODFkNTg5MmZlNDg2YjgzZGVmZTMyNDAwODk3ZWYwMjMyMzkwNiIsInRpbWVzdGFtcCI6MTQ2NDgyNjg5MDI2Nn0=";
-		byte[] b = Base64.decode(msg);
-		String result = new String(b);
-		System.out.println(result);
-		
-	}
 }

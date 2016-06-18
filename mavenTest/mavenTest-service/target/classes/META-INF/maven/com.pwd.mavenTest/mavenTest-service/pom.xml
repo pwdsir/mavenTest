@@ -19,13 +19,13 @@
     <dependency>
       <groupId>com.pwd.mavenTest</groupId>
       <artifactId>mavenTest-dal</artifactId>
-      <version>1.0.1</version>
+      <version>${project.version}</version>
     </dependency>
     
     <dependency>
     	<groupId>com.pwd.mavenTest</groupId>
     	<artifactId>mavenTest-interface</artifactId>
-    	<version>1.0.1</version>
+    	<version>${project.version}</version>
     </dependency>
   </dependencies>
 </project>

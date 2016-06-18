@@ -20,12 +20,87 @@
 
 	<!-- 数据库配置文件位置 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
-	<!-- 配置druid数据源 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-		<property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="123456"></property>
+	
+	<bean id="basicDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close" abstract="true">
+		<property name="driverClassName">
+			<value>${jdbc.driver}</value>
+		</property>
+		<!-- 连接池最大使用连接数 -->
+		<property name="maxActive">
+			<value>${jdbc.maxActive}</value>
+		</property>
+		<!-- 初始化连接大小 -->
+		<property name="initialSize">
+			<value>${jdbc.initialSize}</value>
+		</property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait">
+			<value>${jdbc.maxWait}</value>
+		</property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle">
+			<value>${jdbc.minIdle}</value>
+		</property>
+		<!-- 自动清除无用连接 -->
+		<property name="removeAbandoned">
+			<value>${jdbc.removeAbandoned}</value>
+		</property>
+		<!-- 清除无用连接的等待时间 -->
+		<property name="removeAbandonedTimeout">
+			<value>${jdbc.removeAbandonedTimeout}</value>
+		</property>
+		<!-- 配置间隔多久才进行一次检测 -->
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>${jdbc.timeBetweenEvictionRunsMillis}</value>
+		</property>
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis">
+			<value>${jdbc.minEvictableIdleTimeMillis}</value>
+		</property>
+		<!-- 用来检测连接是否有效的sql -->
+		<property name="validationQuery">
+			<value>${jdbc.validationQuery}</value>
+		</property>
+		<!-- 申请连接的时候检测 -->
+		<property name="testWhileIdle">
+			<value>${jdbc.testWhileIdle}</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>${jdbc.testOnBorrow}</value>
+		</property>
+		<property name="testOnReturn">
+			<value>${jdbc.testOnReturn}</value>
+		</property>
+		<!-- 连接属性 -->
+		<property name="connectionProperties">
+			<value>${jdbc.connectionProperties}</value>
+		</property>
+		<property name="poolPreparedStatements">
+			<value>${jdbc.poolPreparedStatements}</value>
+		</property>
+		<property name="maxPoolPreparedStatementPerConnectionSize">
+			<value>${jdbc.maxPoolPreparedStatementPerConnectionSize}</value>
+		</property>
+		<!-- 通过别名的方式配置扩展插件 -->
+		<property name="filters">
+			<value>${jdbc.filters}</value>
+		</property>
 	</bean>
+
+	<!-- dataSource -->
+	<bean id="dataSource" parent="basicDataSource">
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+
 
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

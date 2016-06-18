@@ -9,11 +9,13 @@
 		<work.basedir>E:\git\mavenTest</work.basedir>
 		<log4j2.version>2.5</log4j2.version>
 		<spring.version>4.2.3.RELEASE</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<groupId>com.pwd</groupId>
 	<artifactId>mavenTest</artifactId>
 	<version>1.0.1</version>
 	<packaging>pom</packaging>
+	<name>pwd</name>
 
 	<dependencies>
 
@@ -147,7 +149,7 @@
 
 	<build>
 		<!-- 设定包名的命名规则 -->
-		<finalName>mavenTest-1.0</finalName>
+		<finalName>${project.name}-${project.version}</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -196,9 +198,16 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
+					<include>*.properties</include>
 				</includes>
+			</resource>
+
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>*.properties</exclude>
+				</excludes>
 			</resource>
 		</resources>
 	</build>
@@ -237,4 +246,5 @@
 			</build>
 		</profile>
 	</profiles>
+	
 </project>
