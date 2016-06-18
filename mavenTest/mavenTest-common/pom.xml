@@ -5,7 +5,7 @@
   <parent>
     <artifactId>mavenTest</artifactId>
     <groupId>com.pwd</groupId>
-    <version>1.0.1</version>
+    <version>${parent.version}</version>
   </parent>
   <groupId>com.pwd.mavenTest</groupId>
   <artifactId>mavenTest-common</artifactId>

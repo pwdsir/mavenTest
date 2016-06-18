@@ -5,6 +5,21 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-jee/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <dependent-module archiveName="mavenTest-interface-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mavenTest-interface/mavenTest-interface">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mavenTest-model-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mavenTest-model/mavenTest-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mavenTest-common-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mavenTest-common/mavenTest-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mavenTest-service-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mavenTest-service/mavenTest-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mavenTest-dal-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mavenTest-dal/mavenTest-dal">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="/mavenTest-user"/>
         <property name="java-output-path" value="/mavenTest-user Maven Webapp/src/main/webapp/src/main/resources"/>
     </wb-module>

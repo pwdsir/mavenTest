@@ -5,7 +5,7 @@
 	<properties>
 		<parent.groupId>com.pwd</parent.groupId>
 		<parent.artifactId>mavenTest</parent.artifactId>
-		<parent.version>1.0.1</parent.version>
+		<parent.version>1.0.4</parent.version>
 		<work.basedir>E:\git\mavenTest</work.basedir>
 		<log4j2.version>2.5</log4j2.version>
 		<spring.version>4.2.3.RELEASE</spring.version>
@@ -13,7 +13,7 @@
 	</properties>
 	<groupId>com.pwd</groupId>
 	<artifactId>mavenTest</artifactId>
-	<version>1.0.1</version>
+	<version>${parent.version}</version>
 	<packaging>pom</packaging>
 	<name>pwd</name>
 
