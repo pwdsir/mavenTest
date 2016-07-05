@@ -1078,7 +1078,7 @@ public final class StringUtil {
 		String frm = "from ";
 
 		s = sql.indexOf(sel, 0);
-		if (s > -1) {
+		if (s >= -1) {
 			stack.push(sel);
 			b = s + sel.length();
 		}

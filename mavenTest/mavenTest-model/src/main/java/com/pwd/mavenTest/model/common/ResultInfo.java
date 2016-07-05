@@ -1,4 +1,4 @@
-package com.pwd.mavenTest.model;
+package com.pwd.mavenTest.model.common;
 
 import java.io.Serializable;
 

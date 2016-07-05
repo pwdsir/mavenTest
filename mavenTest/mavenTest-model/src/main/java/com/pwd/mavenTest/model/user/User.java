@@ -3,8 +3,10 @@ package com.pwd.mavenTest.model.user;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.pwd.mavenTest.model.common.BaseModel;
+
 //用户实体
-public class User implements Serializable{
+public class User extends BaseModel implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
@@ -43,9 +45,6 @@ public class User implements Serializable{
 		return "User [id=" + id + ", userName=" + userName + ", userPassword="
 				+ userPassword + ", createTime=" + createTime + "]";
 	}
-	
-	
-	
 	
 	
 }

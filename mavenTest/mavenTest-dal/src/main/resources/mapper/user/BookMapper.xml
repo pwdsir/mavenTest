@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pwd.mavenTest.dao.book.IBookDao">
+
+	<resultMap type="com.pwd.mavenTest.model.book.Book" id="bookMap">
+		<result column="book_name" property="bookName" />
+		<result column="book_author" property="bookAuthor" />
+		<result column="book_price" property="bookPrice"/>
+		<result column="create_time" property="createTime" />
+	</resultMap>
+
+	<select id="getBookById" resultMap="bookMap">
+		select
+		book_name,book_author,book_price,create_time from book where id = #{id}
+		limit 1
+	</select>
+
+	<select id="pageQueryBooks" resultMap="bookMap" parameterType="page">
+		select
+		book_name,book_author,book_price,create_time from book
+		<where>
+			<if test="p.bookName!='' and p.bookName!=null">
+				book_name = #{p.bookName}
+			</if>
+		</where>
+	</select>
+
+	<update id="updateBook" parameterType="com.pwd.mavenTest.model.book.Book">
+		update book
+		<set>
+			<if test="bookName'' and bookName !=null">book_name = #{bookName},</if>
+			<if test="bookAuthor'' and bookAuthor !=null">book_author = #{bookAuthor},</if>
+			<if test="bookPrice'' and bookPrice !=null">book_price = #{bookPrice},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<insert id="addBook" parameterType="com.pwd.mavenTest.model.book.Book"
+		 keyProperty="id" useGeneratedKeys="true">
+		insert into
+		book(book_name,book_author,book_price) values(#{bookName},#{bookAuthor},#{bookPrice})
+	</insert>
+
+</mapper>

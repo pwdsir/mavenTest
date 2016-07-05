@@ -1,4 +1,4 @@
-package com.pwd.mavenTest.common;
+package com.pwd.mavenTest.controller.common;
 
 public class Constants {
 	

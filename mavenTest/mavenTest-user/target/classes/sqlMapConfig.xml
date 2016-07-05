@@ -10,8 +10,8 @@
 	
 	<typeAliases>
 		<typeAlias alias="page" type="com.pwd.mavenTest.util.page.PageParam" />
-
 	</typeAliases>
+	
 	<plugins>
 		<plugin interceptor="com.pwd.mavenTest.util.page.PageInterceptor">
 			<property name="dbType" value="mysql" />
