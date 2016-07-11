@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>mavenTest</artifactId>
+		<groupId>com.pwd</groupId>
+		<version>${parent.version}</version>
+	</parent>
+
+	<groupId>com.pwd.mavenTest</groupId>
+	<artifactId>mavenTest-task</artifactId>
+	<packaging>war</packaging>
+	<name>mavenTest-user Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.pwd.mavenTest</groupId>
+			<artifactId>mavenTest-interface</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.pwd.mavenTest</groupId>
+			<artifactId>mavenTest-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- quartz 定时任务框架 -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>mavenTest-task</finalName>
+	</build>
+</project>

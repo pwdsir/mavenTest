@@ -151,6 +151,7 @@
 		<module>mavenTest-service</module>
 		<module>mavenTest-interface</module>
 		<module>mavenTest-user</module>
+		<module>mavenTest-task</module>
 	</modules>
 
 	<build>
