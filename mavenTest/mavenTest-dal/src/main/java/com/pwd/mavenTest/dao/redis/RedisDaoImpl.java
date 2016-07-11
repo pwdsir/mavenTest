@@ -21,7 +21,7 @@ public class RedisDaoImpl implements IRedisDao{
 			@Override
 			public Object doInRedis(RedisConnection connection)
 					throws DataAccessException {
-				connection.set(serializeKey(key), serializeValue(value));
+				connection.set(serializeValue(key), serializeValue(value));
 				return null;
 			}
 		});
@@ -35,11 +35,24 @@ public class RedisDaoImpl implements IRedisDao{
 			@Override
 			public Object doInRedis(RedisConnection connection)
 					throws DataAccessException {
-				byte[] keyBytes = serializeKey(key);
+				byte[] keyBytes = serializeValue(key);
 				if (connection.exists(keyBytes)) {
 					byte[] valueBytes = connection.get(keyBytes);
 					return deserializeValue(valueBytes);
 				}
+				return null;
+			}
+		});
+	}
+	
+	public void flushAll(){
+		redisTemplate.execute(new RedisCallback<Object>() {
+
+			@Override
+			public Object doInRedis(RedisConnection connection)
+					throws DataAccessException {
+				// TODO Auto-generated method stub
+				connection.flushAll();
 				return null;
 			}
 		});
@@ -57,7 +70,7 @@ public class RedisDaoImpl implements IRedisDao{
 	}
 	
 	protected Object deserializeValue(byte[] value) {
-		return redisTemplate.getDefaultSerializer().deserialize(value);
+		return redisTemplate.getValueSerializer().deserialize(value);
 	}
 
 	

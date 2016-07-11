@@ -2,6 +2,9 @@ package com.pwd.mavenTest.controller.user;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.pwd.mavenTest.interfaces.redis.IRedisService;
 import com.pwd.mavenTest.interfaces.sms.ISmsSendService;
 import com.pwd.mavenTest.interfaces.user.IUserService;
@@ -41,9 +45,11 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="getUserById",method=RequestMethod.GET)
 	public ResultInfo getUserById(){
-		User user = null;
+		User user1 = null;
+		User user2 = null;
 		try {
-			user = userService.getUserById(1);
+			user1 = userService.getUserById(1);
+			user2 = userService.getUserById(2);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("查询用户信息失败", e);
@@ -51,12 +57,16 @@ public class UserController {
 //		String msg = "程序有各bug";
 //		boolean isSucc = smsSendService.smsSend("【pwd】赶快回来，程序出问题了。"+msg, "13556860560");
 		
-		redisService.save("test", "xxx");
-		
-		System.out.println(redisService.read("test").toString());
-		return ResultInfo.success(user);
+		List<User> list = new ArrayList<>();
+		list.add(user1);
+		list.add(user2);
+		redisService.save("list", list);
+		List<User> l =  (List<User>) redisService.read("list") ;
+		System.out.println(l.toString());
+		return ResultInfo.success(user1);
 		
 	}
+
 	
 	@ResponseBody
 	@RequestMapping(value="getUsers",method=RequestMethod.GET)
